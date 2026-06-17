@@ -44,11 +44,24 @@ def view_products(products):
         )
 # Search products
 def Search_products(products):
-    Search_id = input("enter product ID")
+    Search_id = input("enter product ID: ")
     for product in products:
         if product["id"] == Search_id:
             print("\nproduct found")
             print(product)
             return
         print("product not found!")
-        
+
+#update products
+def update_prodducts(products):
+    product_id = input("enter Product ID: ")
+    for product in products:
+        if product["id"] == product_id:
+               new_quantity = (
+                   input("Enter new Quantity: ")
+               )
+               product["quantity"] = new_quantity
+               save_products(products)
+               print("Stock Updated Successfully!")
+               return
+        print("Product Not Found!")
