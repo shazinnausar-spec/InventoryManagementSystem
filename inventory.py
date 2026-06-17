@@ -8,16 +8,18 @@ def load_products():    #creating a function called Load_products
         with open(FILENAME, "r") as file:
             return json.load(file)
     return []
+
 # save products 
 def save_products(products):   #creating a function called save_products
     with open(FILENAME, "w") as file:
         json.dump(products, file, indent=4)
+
 # add product
 def add_product(products):
-    porduct_id = input("enter product id: ")
-    name = input("enter product name: ")
-    quantity = int(input("enter product quantity: ")) 
-    price = float(input("enter product price: "))
+    product_id = input("Enter Product ID: ")
+    name = input("Enter Product Name: ")
+    quantity = int(input("Enter Product Quantity: ")) 
+    price = float(input("Enter Product Price: "))
 
     product = {
         "id": product_id,
@@ -32,7 +34,7 @@ def add_product(products):
 #view products
 def view_products(products):
     if not products:
-        print("\nNo products available.\n")
+        print("\nNo Products Available.\n")
         return
     print("\nPRODUCTS LIST")
     for product in products:
@@ -40,28 +42,41 @@ def view_products(products):
             f"ID: {product['id']} | "
             f"Name: {product['name']} | "
             f"Quantity: {product['quantity']} | "
-            f"price: Rs.{product['price']}"
+            f"Price: Rs.{product['price']}"
         )
 # Search products
 def Search_products(products):
-    Search_id = input("enter product ID: ")
+    Search_id = input("Enter Product ID: ")
     for product in products:
         if product["id"] == Search_id:
-            print("\nproduct found")
+            print("\nProduct Found")
             print(product)
             return
-        print("product not found!")
+        print("Product not Found!")
 
 #update products
 def update_prodducts(products):
-    product_id = input("enter Product ID: ")
+    product_id = input("Enter Product ID: ")
     for product in products:
         if product["id"] == product_id:
                new_quantity = (
-                   input("Enter new Quantity: ")
+                   input("Enter New Quantity: ")
                )
                product["quantity"] = new_quantity
                save_products(products)
                print("Stock Updated Successfully!")
                return
         print("Product Not Found!")
+
+# delate products
+def delete_products(products):
+    product_id = input("Enter Product ID; ")
+    for product in products:
+        if product["id"] == product_id:
+            products.remove(product)
+            save_products(products)
+            print("Product Remove Successfully!")
+            return
+        print("Product Not Found!")
+
+
