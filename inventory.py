@@ -45,7 +45,7 @@ def view_products(products):
             f"Price: Rs.{product['price']}"
         )
 # Search products
-def Search_products(products):
+def search_products(products):
     Search_id = input("Enter Product ID: ")
     for product in products:
         if product["id"] == Search_id:
@@ -55,7 +55,7 @@ def Search_products(products):
         print("Product not Found!")
 
 #update products
-def update_prodducts(products):
+def update_products(products):
     product_id = input("Enter Product ID: ")
     for product in products:
         if product["id"] == product_id:
@@ -79,4 +79,35 @@ def delete_products(products):
             return
         print("Product Not Found!")
 
+#main menu
+def main():
+    products = load_products()
+    while True:
+        print("""
+        iNVENTORY MANAGEMENT SYSTEM
+              1. Add Product
+              2. View Products
+              3. Search Products
+              4. Update Product
+              5. Delete Product
+              6. Exit
+        """)
+        choice = input("Enter Your Choice: ")
+        if choice == "1":
+            add_product(products)
+        elif choice == "2":
+            view_products(products)
+        elif choice == "3":
+            search_products(products)
+        elif choice == "4":
+            update_products(products)
+        elif choice == "5":
+            delete_products(products)
+        elif choice == "6":
+            print("Thank you for using the Inventory Management System!")
+            break
+        else:
+            print("Invalid Choice please Try Again!")    
 
+if __name__ == "__main__":
+    main()
