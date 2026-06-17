@@ -42,3 +42,13 @@ def view_products(products):
             f"Quantity: {product['quantity']} | "
             f"price: Rs.{product['price']}"
         )
+# Search products
+def Search_products(products):
+    Search_id = input("enter product ID")
+    for product in products:
+        if product["id"] == Search_id:
+            print("\nproduct found")
+            print(product)
+            return
+        print("product not found!")
+        
