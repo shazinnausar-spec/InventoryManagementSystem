@@ -28,4 +28,17 @@ def add_product(products):
     products.append(product)
     save_products(products)
     print("\nProduct Added Successfully!\n")
-    
+
+#view products
+def view_products(products):
+    if not products:
+        print("\nNo products available.\n")
+        return
+    print("\nPRODUCTS LIST")
+    for product in products:
+        print(
+            f"ID: {product['id']} | "
+            f"Name: {product['name']} | "
+            f"Quantity: {product['quantity']} | "
+            f"price: Rs.{product['price']}"
+        )
