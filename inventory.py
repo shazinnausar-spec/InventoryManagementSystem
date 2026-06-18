@@ -79,6 +79,20 @@ def delete_products(products):
             return
         print("Product Not Found!")
 
+#login function
+def login():
+    username = "Admin"
+    password = "admin1234"
+    print("\nLOGIN TO INVENTORY MANAGEEMENT SYSTEM")
+    entered_username = input("Enter Username: ")
+    entered_password = input("Enter Password: ")
+
+    if entered_username  == username and entered_password == password:
+        print("login Successful!")
+        return True
+    print ("Invalid Username or Password!")
+    return False         
+
 #main menu
 def main():
     products = load_products()
@@ -110,4 +124,5 @@ def main():
             print("Invalid Choice please Try Again!")    
 
 if __name__ == "__main__":
-    main()
+    if login():
+        main()
