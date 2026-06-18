@@ -84,7 +84,7 @@ def low_stock_alert(products):
     print("\n   Low Stock Products")
     found = False
     for product in products:
-        if product["quantity"] < 5:
+        if int(product["quantity"]) < 5:
             found = True
             print(
                 f"{product['name']} "
@@ -92,6 +92,15 @@ def low_stock_alert(products):
             )
     if not found:
         print("No Low Stock Products Found.")
+
+#inventory value report 
+def inventory_value_report(products):
+    total = 0
+    for product in products:
+        total += (
+            int(product["quantity"]) * float(product["price"])
+        )
+    print(f"\nTotal Inventory Value : Rs.{total:.2f}")    
 
 #login function
 def login():
@@ -119,7 +128,8 @@ def main():
               4. Update Product
               5. Delete Product
               6. Low Stock Alert
-              7. Exit
+              7. Inventory Value Report
+              8. Exit
         """)
         choice = input("Enter Your Choice: ")
         if choice == "1":
@@ -133,8 +143,10 @@ def main():
         elif choice == "5":
             delete_products(products)
         elif choice == "6":
-            low_stock_alert(products)   
+            low_stock_alert(products)  
         elif choice == "7":
+            inventory_value_report(products)
+        elif choice == "8":
             print("Thank you for using the Inventory Management System!")
             break
         else:
