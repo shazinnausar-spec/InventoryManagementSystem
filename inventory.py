@@ -79,6 +79,20 @@ def delete_products(products):
             return
         print("Product Not Found!")
 
+#Low Stock Alert
+def low_stock_alert(products):
+    print("\n   Low Stock Products")
+    found = False
+    for product in products:
+        if product["quantity"] < 5:
+            found = True
+            print(
+                f"{product['name']} "
+                f"(QTY: {product['quantity']})"
+            )
+    if not found:
+        print("No Low Stock Products Found.")
+
 #login function
 def login():
     username = "Admin"
@@ -104,7 +118,8 @@ def main():
               3. Search Products
               4. Update Product
               5. Delete Product
-              6. Exit
+              6. Low Stock Alert
+              7. Exit
         """)
         choice = input("Enter Your Choice: ")
         if choice == "1":
@@ -118,6 +133,8 @@ def main():
         elif choice == "5":
             delete_products(products)
         elif choice == "6":
+            low_stock_alert(products)   
+        elif choice == "7":
             print("Thank you for using the Inventory Management System!")
             break
         else:
